@@ -15,6 +15,10 @@ jobs:
     docker:
       - image: alpine:3.9
     steps: *steps_for_shell
+  shell_debian:
+    docker:
+      - image: debian:buster-slim
+    steps: *steps_for_shell
 
 workflows:
   version: 2
@@ -22,3 +26,4 @@ workflows:
     jobs:
       - shell_circleci_golang
       - shell_alpine
+      - shell_debian
