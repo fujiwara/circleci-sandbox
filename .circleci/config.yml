@@ -4,21 +4,28 @@ jobs:
   shell_circleci_golang:
     docker:
       - image: circleci/golang:1.12.9
-    steps: &steps_for_shell
-      - run:
+    steps:
+      - run: &run_for_shell
           command: |
             echo "SHELL=$SHELL"
             echo -n "CURRENT SHELL"
             readlink /proc/$$/exe
-            ps auxwf
+
   shell_alpine:
     docker:
       - image: alpine:3.9
-    steps: *steps_for_shell
+    steps:
+      - run:
+          command: |
+            apk --no-cache add bash
+      - run: *run_for_shell
+
   shell_debian:
     docker:
       - image: debian:buster-slim
-    steps: *steps_for_shell
+    steps:
+      - run: *run_for_shell
+
 
 workflows:
   version: 2
