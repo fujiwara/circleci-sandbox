@@ -1,0 +1,17 @@
+version: 2.1
+
+jobs:
+  shell:
+    docker:
+      - image: circleci/golang:1.12.9
+    steps:
+      - run:
+          command: |
+            echo "SHELL=$SHELL"
+            echo "CURRENT SHELL $(readlink/$$/exe)"
+            ps auxwf
+workflows:
+  version: 2
+  test_shell:
+    jobs:
+      - shell
