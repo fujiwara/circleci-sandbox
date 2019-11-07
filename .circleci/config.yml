@@ -8,7 +8,8 @@ jobs:
       - run:
           command: |
             echo "SHELL=$SHELL"
-            echo "CURRENT SHELL $(readlink/$$/exe)"
+            echo -n "CURRENT SHELL"
+            readlink /proc/$$/exe
             ps auxwf
 workflows:
   version: 2
