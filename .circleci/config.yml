@@ -10,7 +10,7 @@ jobs:
       - ecspresso/install
       - run:
           command: |
-            ecspresso --version
+            ecspresso version
 
 
 workflows:
