@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  ecspresso: fujiwara/ecspresso@0
+  ecspresso: fujiwara/ecspresso@dev:latest
 
 jobs:
   shell_debian:
