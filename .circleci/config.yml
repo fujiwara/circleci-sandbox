@@ -1,36 +1,20 @@
 version: 2.1
+orbs:
+  ecspresso: fujiwara/ecspresso@0
 
 jobs:
-  shell_circleci_golang:
-    docker:
-      - image: circleci/golang:1.12.9
-    steps:
-      - run: &run_for_shell
-          command: |
-            echo "SHELL=$SHELL"
-            echo -n "CURRENT SHELL"
-            readlink /proc/$$/exe
-
-  shell_alpine:
-    docker:
-      - image: alpine:3.9
-    steps:
-      - run:
-          command: |
-            apk --no-cache add bash
-      - run: *run_for_shell
-
   shell_debian:
     docker:
       - image: debian:buster-slim
     steps:
-      - run: *run_for_shell
+      - ecspresso/install
+      - run:
+          command: |
+            ecspresso --version
 
 
 workflows:
   version: 2
   test_shell:
     jobs:
-      - shell_circleci_golang
-      - shell_alpine
       - shell_debian
