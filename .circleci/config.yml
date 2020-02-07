@@ -1,14 +1,13 @@
 version: 2.1
 orbs:
-  ecspresso: fujiwara/ecspresso@0.0.2
+  ecspresso: fujiwara/ecspresso@0.0.4
 
 jobs:
   shell_debian:
     docker:
       - image: circleci/golang:1.13.7
     steps:
-      - ecspresso/install:
-          version: v0.12.0
+      - ecspresso/install
       - run:
           command: |
             ecspresso version
