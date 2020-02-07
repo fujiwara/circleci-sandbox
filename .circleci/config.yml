@@ -5,7 +5,7 @@ orbs:
 jobs:
   shell_debian:
     docker:
-      - image: debian:buster-slim
+      - image: circleci/golang:1.13.7
     steps:
       - ecspresso/install
       - run:
