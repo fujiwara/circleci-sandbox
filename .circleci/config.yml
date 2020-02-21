@@ -13,6 +13,8 @@ jobs:
     docker:
       - image: alpine:3.9
     steps:
+      - run: |
+          sudo apk --no-cache add curl unzip
       - aws-cli-v2/install
       - run: |
           aws --version
